@@ -3,6 +3,7 @@ import whisper
 import streamlit as st
 import time
 
+
 whisper_model = "medium" # tiny, base, small, medium, large
 
 def extract_script(mp3_file):
@@ -15,8 +16,14 @@ def extract_script(mp3_file):
             return script
 
 def mp3_to_txt_app():
+#     title nad fabicon
+    st.set_page_config(page_title = "MP3 to TXT", page_icon = "🎙️")
+    
+#     featured image
+    st.image("https://cdn.pixabay.com/photo/2017/01/31/13/50/headphones-2024215_1280.png", width=150)
     st.title("Hani Script Extractor")
     st.subheader("Convert MP3 to TXT")
+    
     # 파일 업로드
     mp3_file = st.file_uploader("Upload MP3", type=["mp3"])
     if mp3_file is not None:
