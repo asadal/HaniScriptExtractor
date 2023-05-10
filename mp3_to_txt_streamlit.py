@@ -11,7 +11,7 @@ def extract_script(mp3_file):
     with NamedTemporaryFile(suffix="mp3") as temp:
             temp.write(mp3_file.getvalue())
             old_file_position = temp.tell()
-            temp.seek(0. os.SEEK_END)
+            temp.seek(0, os.SEEK_END)
             # Get File Size
             getsize = temp.tell()
             temp.seek(old_file_position, os.SEEK_SET)
