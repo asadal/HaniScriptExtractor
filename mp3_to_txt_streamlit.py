@@ -9,7 +9,7 @@ whisper_model = "medium" # tiny, base, small, medium, large
 
 @st.cache_resource
 def load_whisper_model():
-    return whisper.load_model(wihisper_model)
+    return whisper.load_model(whisper_model)
 
 def extract_script(mp3_file):
     with NamedTemporaryFile(suffix="mp3") as temp:
