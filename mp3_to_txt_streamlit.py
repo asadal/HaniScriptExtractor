@@ -7,6 +7,10 @@ import os
 
 whisper_model = "medium" # tiny, base, small, medium, large
 
+@st.cache_resource
+def load_whisper_model():
+    return whisper.load_model(wihisper_model)
+
 def extract_script(mp3_file):
     with NamedTemporaryFile(suffix="mp3") as temp:
             temp.write(mp3_file.getvalue())
@@ -18,7 +22,7 @@ def extract_script(mp3_file):
             getsize = round((getsize / 1000000), 1)
             
             # Extract Script
-            model = whisper.load_model(whisper_model)
+            model = st.write(load_whisper_model())
             result = model.transcribe(temp.name)
             script = result["text"]
             return script
