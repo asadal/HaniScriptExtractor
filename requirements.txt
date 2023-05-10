@@ -1,4 +1,3 @@
-tempfile
 openai-whisper
 streamlit
 time
