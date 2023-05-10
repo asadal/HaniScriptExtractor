@@ -2,6 +2,7 @@ from tempfile import NamedTemporaryFile
 import whisper
 import streamlit as st
 import time
+import os
 
 
 whisper_model = "medium" # tiny, base, small, medium, large
@@ -9,7 +10,14 @@ whisper_model = "medium" # tiny, base, small, medium, large
 def extract_script(mp3_file):
     with NamedTemporaryFile(suffix="mp3") as temp:
             temp.write(mp3_file.getvalue())
-            temp.seek(0)
+            old_file_position = temp.tell()
+            temp.seek(0. os.SEEK_END)
+            # Get File Size
+            getsize = temp.tell()
+            temp.seek(old_file_position, os.SEEK_SET)
+            getsize = round((getsize / 1000000), 1)
+            
+            # Extract Script
             model = whisper.load_model(whisper_model)
             result = model.transcribe(temp.name)
             script = result["text"]
