@@ -41,8 +41,8 @@ def mp3_to_txt_app():
             my_bar.progress(percent_complete + 1, text=progress_text)
         time.sleep(3)
         with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
-        tmp_file.write(mp3_file.getvalue())
-        file_path = tmp_file.name
+            tmp_file.write(mp3_file.getvalue())
+            file_path = tmp_file.name
             
         # Extract Script
         model = st.write(load_whisper_model())
