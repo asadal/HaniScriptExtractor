@@ -11,21 +11,16 @@ whisper_model = "medium" # tiny, base, small, medium, large
 def load_whisper_model():
     return whisper.load_model(whisper_model)
 
-def extract_script(mp3_file):
-    with NamedTemporaryFile(suffix="mp3") as temp:
-            temp.write(mp3_file.getvalue())
-            old_file_position = temp.tell()
-            temp.seek(0, os.SEEK_END)
-            # Get File Size
-            getsize = temp.tell()
-            temp.seek(old_file_position, os.SEEK_SET)
-            getsize = round((getsize / 1000000), 1)
+# def extract_script(mp3_file):
+#     with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
+#             tmp_file.write(mp3_file.getvalue())
+#             file_path = tmp_file.name
             
-            # Extract Script
-            model = st.write(load_whisper_model())
-            result = model.transcribe(temp.name)
-            script = result["text"]
-            return script
+#             # Extract Script
+#             model = st.write(load_whisper_model())
+#             result = model.transcribe(file_path)
+#             script = result["text"]
+#             return script
 
 def mp3_to_txt_app():
 #     title nad fabicon
@@ -45,7 +40,14 @@ def mp3_to_txt_app():
             time.sleep(0.1)
             my_bar.progress(percent_complete + 1, text=progress_text)
         time.sleep(3)
-        script = extract_script(mp3_file)
+        with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
+        tmp_file.write(mp3_file.getvalue())
+        file_path = tmp_file.name
+            
+        # Extract Script
+        model = st.write(load_whisper_model())
+        result = model.transcribe(file_path)
+        script = result["text"]
         st.write(script)
 
         # 다운로드 링크 생성
