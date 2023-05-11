@@ -34,7 +34,7 @@ def mp3_to_txt_app():
     st.subheader("Convert MP3 to TXT")
     
     # 파일 업로드
-    mp3_file = st.file_uploader("Upload MP3", type=None)
+    mp3_file = st.file_uploader("MP3 파일을 올려주세요.", type=["mp3"])
     if mp3_file is not None:
 #         progress_text = "Operation in progress. Please wait."
 #         my_bar = st.progress(0, text=progress_text)
@@ -42,7 +42,7 @@ def mp3_to_txt_app():
 #             time.sleep(0.1)
 #             my_bar.progress(percent_complete + 1, text=progress_text)
 #         time.sleep(3)
-        with NamedTemporaryFile(delete=False) as tmp_file:
+        with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
             tmp_file.write(mp3_file.getvalue())
             file_path = tmp_file.name
             
