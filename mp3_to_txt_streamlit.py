@@ -5,7 +5,7 @@ import time
 import os
 
 
-whisper_model = "large" # tiny, base, small, medium, large
+whisper_model = "medium" # tiny, base, small, medium, large
 
 @st.cache_resource
 def load_whisper_model():
