@@ -5,7 +5,7 @@ import time
 import os
 
 
-whisper_model = "small" # tiny, base, small, medium, large
+whisper_model = "medium" # tiny, base, small, medium, large
 
 @st.cache_resource
 def load_whisper_model():
@@ -47,8 +47,8 @@ def mp3_to_txt_app():
             file_path = tmp_file.name
             
         # Extract Script
-        model = load_whisper_model()
-        result = transcribe_audio(model, file_path)
+        model = st.write(load_whisper_model())
+        result = st.write(transcribe_audio(model, file_path))
         script = result["text"]
         st.write(script)
 
