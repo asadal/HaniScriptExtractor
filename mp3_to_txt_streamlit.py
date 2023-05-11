@@ -11,6 +11,8 @@ whisper_model = "medium" # tiny, base, small, medium, large
 def load_whisper_model():
     return whisper.load_model(whisper_model)
 
+def transcribe_audio(model):
+    return model.transcribe(file_path)
 # def extract_script(mp3_file):
 #     with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
 #             tmp_file.write(mp3_file.getvalue())
@@ -46,7 +48,7 @@ def mp3_to_txt_app():
             
         # Extract Script
         model = load_whisper_model()
-        result = model.transcribe(file_path)
+        result = transcribe_audio(model)
         script = result["text"]
         st.write(script)
 
