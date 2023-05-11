@@ -45,7 +45,7 @@ def mp3_to_txt_app():
             file_path = tmp_file.name
             
         # Extract Script
-        model = st.write(load_whisper_model())
+        model = load_whisper_model()
         result = model.transcribe(file_path)
         script = result["text"]
         st.write(script)
