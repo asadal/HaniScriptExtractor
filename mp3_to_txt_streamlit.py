@@ -52,8 +52,10 @@ def mp3_to_txt_app():
                 file_path = tmp_file.name
             
             # Extract Script
-            model = load_whisper_model(whisper_model)
-            result = transcribe_audio(model, file_path)
+#             model = load_whisper_model(whisper_model)
+            model = whisper.load_model(whisper_model)
+#             result = transcribe_audio(model, file_path)
+            result = model.transcribe(file_path)
             script = result["text"]
             if script:
                 st.success("스크립트 추출 완료!")
