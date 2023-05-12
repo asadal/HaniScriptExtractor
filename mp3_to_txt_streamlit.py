@@ -32,11 +32,14 @@ def mp3_to_txt_app():
     st.image("https://cdn.pixabay.com/photo/2017/01/31/13/50/headphones-2024215_1280.png", width=150)
     st.title("Hani Script Extractor")
     st.subheader("Convert MP3 to TXT")
+    st.markdown("오픈AI의 오픈소스 인공지능 STT(Speech-to-Text) 모델인 [Whisper](https://github.com/openai/whisper)를 활용했습니다. ")
     
-    # 파일 업로드
+    # whisper model 선택
     whisper_model = st.selectbox("모델을 선택해주세요.(base나 small을 권장합니다. medium과 large는 스크립트 추출 속도가 느려질 수 있습니다.)", ('tiny', 'base', 'small', 'medium', 'large'))
     st.write("모델 : ", whisper_model) 
     st.divider()
+    
+    # 파일 업로드
     mp3_file = st.file_uploader("MP3 파일을 올려주세요.", type=["mp3"])
     
     if mp3_file is not None:
