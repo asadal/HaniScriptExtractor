@@ -46,6 +46,8 @@ def mp3_to_txt_app():
 #             time.sleep(0.1)
 #             my_bar.progress(percent_complete + 1, text=progress_text)
 #         time.sleep(3)
+        st.spinner("스크립트를 추출하고 있습니다. 잠시만 기다려주세요...")
+        
         with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
             tmp_file.write(mp3_file.getvalue())
             file_path = tmp_file.name
@@ -54,7 +56,9 @@ def mp3_to_txt_app():
         model = load_whisper_model()
         result = transcribe_audio(model, file_path)
         script = result["text"]
-        st.write(script)
+        if script:
+            st.success("스크립트 추출 완료!")
+            st.write(script)
 
         # 다운로드 링크 생성
         file_name = '-'.join(mp3_file.name.split(".")[:-1]) + ".txt"
