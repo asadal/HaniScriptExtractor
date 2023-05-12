@@ -34,10 +34,11 @@ def mp3_to_txt_app():
     st.subheader("Convert MP3 to TXT")
     
     # 파일 업로드
-    mp3_file = st.file_uploader("MP3 파일을 올려주세요.", type=["mp3"])
     whisper_model = st.selectbox("모델을 선택해주세요.(base나 small을 권장합니다. medium과 large는 스크립트 추출 속도가 느려질 수 있습니다.)", ('tiny', 'base', 'small', 'medium', 'large'))
     st.write("모델 : ", whisper_model) 
     st.divider()
+    mp3_file = st.file_uploader("MP3 파일을 올려주세요.", type=["mp3"])
+    
     if mp3_file is not None:
 #         progress_text = "Operation in progress. Please wait."
 #         my_bar = st.progress(0, text=progress_text)
