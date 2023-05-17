@@ -65,7 +65,7 @@ def mp3_to_txt_app():
                     st.success("스크립트 추출 완료!")
                     st.write(script)
         except Exception as e:
-            st.error("오류가 발생했습니다. 😥"
+            st.error("오류가 발생했습니다. 😥")
             st.write("웹페이지를 새로고침한 후 모델을 'base'나 'small'로 지정하고 재시도해보세요.")
         # 다운로드 링크 생성
         file_name = '-'.join(mp3_file.name.split(".")[:-1]) + ".txt"
