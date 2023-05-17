@@ -50,7 +50,7 @@ def mp3_to_txt_app():
 #             my_bar.progress(percent_complete + 1, text=progress_text)
 #         time.sleep(3)
         try:
-            with st.spinner("스크립트를 추출하고 있습니다. 잠시만 기다려주세요..."):
+            with st.spinner("스크립트를 추출하고 있습니다. 실시간 변환 중이라 생각보다 시간이 오래 걸릴 수 있어요. 잠시만 기다려주세요..."):
                 with NamedTemporaryFile(suffix="mp3", delete=False) as tmp_file:
                     tmp_file.write(mp3_file.getvalue())
                     file_path = tmp_file.name
